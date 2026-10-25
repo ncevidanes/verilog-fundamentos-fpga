@@ -92,7 +92,7 @@ PASS: 4 de 4 combinacoes verificadas.
 
 **Interpretação:** foram verificadas todas as quatro combinações possíveis para duas entradas de um bit; nenhuma divergência foi detectada.
 
-> Na execução inicial, o compilador emitiu um aviso de `timescale` para `porta_and.v`. Esse aviso não invalidou o teste. Para uniformizar as unidades de tempo, pode-se adicionar a diretiva ``timescale 1ns/1ps` no início do módulo, tal como já ocorre no testbench.
+> Na execução inicial, o compilador emitiu um aviso de `timescale` para `porta_and.v`. Esse aviso não invalidou o teste. Para uniformizar as unidades de tempo, pode-se adicionar a diretiva de compilação denominada `timescale` (escrita como `` `timescale 1ns/1ps `` no início do arquivo) no início do módulo, tal como já ocorre no testbench.
 
 ## 7. Resultado gráfico — GTKWave
 

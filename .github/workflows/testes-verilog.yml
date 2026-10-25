@@ -5,12 +5,12 @@ on:
   pull_request:
 
 jobs:
-  simular-and:
+  testar-portas:
     runs-on: ubuntu-latest
     steps:
       - name: Obter codigo
         uses: actions/checkout@v4
       - name: Instalar Icarus Verilog
         run: sudo apt-get update && sudo apt-get install -y iverilog
-      - name: Executar testbench da porta AND
+      - name: Executar testbenches AND e OR
         run: make test

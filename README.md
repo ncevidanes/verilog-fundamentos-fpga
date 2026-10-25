@@ -9,7 +9,7 @@ Os exemplos são executados em Linux com **VS Code**, **Icarus Verilog** e **GTK
 | Ordem | Tema | Conteúdo | Estado |
 |:--:|:--|:--|:--|
 | 01 | [Porta AND](01_Portas_Logicas/01_AND/README.md) | Descrição RTL, tabela-verdade e testbench | Implementado |
-| 02 | Porta OR | Próximo exercício | Planejado |
+| 02 | [Porta OR](01_Portas_Logicas/02_OR/README.md) | Descrição RTL, testbench e tabela-verdade | Implementado — validação pendente |
 | 03 | Porta NOT | Inversão lógica | Planejado |
 | 04 | Porta NAND | Porta universal | Planejado |
 | 05 | Porta NOR | Porta universal | Planejado |
@@ -25,7 +25,7 @@ sudo apt update
 sudo apt install iverilog gtkwave make
 ```
 
-## Executar o primeiro exercício
+## Executar os exercícios
 
 Na raiz do projeto:
 
@@ -33,13 +33,21 @@ Na raiz do projeto:
 make test
 ```
 
-O comando compila a porta AND e seu testbench, simula as quatro combinações possíveis de entrada e informa `PASS` ou `FALHA`.
+O comando compila e testa as portas **AND** e **OR**, com quatro combinações de entrada para cada circuito. Para testar individualmente:
+
+```bash
+make test-and
+make test-or
+```
 
 Para visualizar os sinais de entrada e saída:
 
 ```bash
-make wave
+make wave-and  # Porta AND
+make wave-or   # Porta OR
 ```
+
+O comando `make wave` permanece disponível como atalho para a porta AND.
 
 Limpar arquivos gerados localmente:
 
@@ -53,7 +61,7 @@ Cada exercício terá arquivos Verilog, testbench e documentação individual. F
 
 ## Testes automáticos
 
-O fluxo em `.github/workflows/testes-verilog.yml` executa `make test` no GitHub Actions a cada *push* e *pull request* (quando o GitHub Actions estiver habilitado para o repositório).
+O fluxo em `.github/workflows/testes-verilog.yml` executa os testes das portas AND e OR com `make test` no GitHub Actions a cada *push* e *pull request* (quando o GitHub Actions estiver habilitado para o repositório).
 
 ## Direitos de uso
 

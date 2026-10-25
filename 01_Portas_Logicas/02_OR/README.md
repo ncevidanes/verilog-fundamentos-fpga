@@ -277,9 +277,9 @@ vvp build/porta_or.vvp
 
 **Erro frequente:** se o terminal já estiver em `02_OR/`, **não** prefixe os nomes dos arquivos com `01_Portas_Logicas/02_OR/`. Isso faria o compilador procurar um caminho inexistente.
 
-## 6. Saída esperada no terminal
+## 6. Saída de referência e teste automático
 
-Após uma compilação e simulação bem-sucedidas, esperamos obter:
+A simulação dos quatro casos deve gerar as mensagens abaixo. Além disso, o teste automatizado da Aula 02 foi [aprovado no GitHub Actions](https://github.com/ncevidanes/verilog-fundamentos-fpga/actions/runs/40152823710):
 
 ```text
 VCD info: dumpfile ondas_or.vcd opened for output.
@@ -290,9 +290,9 @@ OK: A=1 B=1 | Y=1
 PASS: 4 de 4 combinacoes verificadas.
 ```
 
-A mensagem `PASS` comprovará, **quando observada na execução real**, que os quatro vetores testados produziram os resultados esperados. A simulação funcional verifica a lógica descrita, mas **não mede atrasos físicos reais de propagação ou utilização de recursos na FPGA**.
+O workflow automatizado concluiu com sucesso os testes das portas AND e OR. A captura real do GTKWave, apresentada adiante, confirma visualmente as quatro combinações da porta OR. A simulação funcional verifica a lógica descrita, mas **não mede atrasos físicos reais de propagação ou utilização de recursos na FPGA**.
 
-## 7. Interpretar o GTKWave
+## 7. Resultado no GTKWave
 
 Se a simulação foi executada a partir de `02_OR/`, abra o arquivo VCD com:
 
@@ -302,7 +302,7 @@ gtkwave ondas_or.vcd
 
 No GTKWave, localize `tb_porta_or`, adicione `A`, `B` e `Y` ao painel de sinais e ajuste o zoom para observar o intervalo **0–40 ns**.
 
-### 7.1. Comportamento temporal esperado
+### 7.1. Comportamento temporal observado
 
 | Intervalo | A | B | Y | Leitura |
 |:--|:-:|:-:|:-:|:--|
@@ -311,11 +311,15 @@ No GTKWave, localize `tb_porta_or`, adicione `A`, `B` e `Y` ao painel de sinais 
 | 20–30 ns | 1 | 0 | 1 | A ativa; saída alta. |
 | 30–40 ns | 1 | 1 | 1 | Ambas ativas; saída alta. |
 
-Assim, a saída `Y` deverá mudar para `1` em **10 ns** e permanecer alta até o fim do teste. Os instantes indicados decorrem dos estímulos impostos pelo testbench, e não de atrasos físicos de uma porta OR.
+Na captura registrada, a saída `Y` muda para `1` em **10 ns** e permanece alta até o fim do teste. Os instantes indicados decorrem dos estímulos impostos pelo testbench, e não de atrasos físicos de uma porta OR.
 
-Após capturar a tela do GTKWave, salve a evidência na pasta desta aula como `porta_or_gtkwave.png`. Quando esse arquivo existir, a linha abaixo poderá ser descomentada no Markdown:
+### 7.2. Evidência gráfica da execução
 
-<!-- ![Formas de onda da porta OR no GTKWave](porta_or_gtkwave.png) -->
+![Formas de onda reais da porta OR no GTKWave, sinais A, B e Y entre 0 e 40 ns](porta_or_gtkwave.png)
+
+*Figura 1 — Recorte da captura de tela real do GTKWave enviada após a simulação da Aula 02. Mostra os sinais A, B e Y entre 0 e 40 ns; a saída Y é igual a 0 apenas quando A=B=0.*
+
+**Validação:** a forma de onda confirma os quatro vetores da tabela-verdade. Esta é uma simulação lógica funcional, não uma medição de atrasos de propagação em hardware.
 
 ## 8. Organização dos arquivos
 
@@ -325,7 +329,7 @@ Após capturar a tela do GTKWave, salve a evidência na pasta desta aula como `p
     ├── porta_or.v            # Descrição do circuito
     ├── tb_porta_or.v         # Testbench automatizado
     ├── README.md             # Explicação e instruções da aula
-    └── porta_or_gtkwave.png  # Captura, após sua geração
+    └── porta_or_gtkwave.png  # Recorte da captura real do GTKWave
 ```
 
 Os arquivos `*.vvp` e `*.vcd` são **artefatos gerados**; em geral, não precisam ser versionados no GitHub. O arquivo `.gitignore` do repositório já os contempla.
@@ -334,4 +338,4 @@ Os arquivos `*.vvp` e `*.vcd` são **artefatos gerados**; em geral, não precisa
 
 A atividade apresenta a descrição de um circuito **combinacional** em Verilog e a importância de separar o projeto (`porta_or.v`) do ambiente de verificação (`tb_porta_or.v`). O teste cobre as quatro combinações de duas entradas binárias e fornece uma base para estudar portas lógicas mais complexas e, adiante, circuitos digitais voltados a FPGA.
 
-**Próximo passo:** executar a simulação local, confirmar o `PASS`, gerar a captura do GTKWave e então atualizar esta documentação com a evidência observada.
+**Resultado:** a Aula 02 está concluída — código e testbench publicados, GitHub Actions aprovado e evidência de GTKWave documentada. **Próxima aula:** porta lógica NOT.

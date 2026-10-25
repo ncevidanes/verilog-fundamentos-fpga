@@ -9,7 +9,7 @@ Os exemplos são executados em Linux com **VS Code**, **Icarus Verilog** e **GTK
 | Ordem | Tema | Conteúdo | Estado |
 |:--:|:--|:--|:--|
 | 01 | [Porta AND](01_Portas_Logicas/01_AND/README.md) | Descrição RTL, tabela-verdade e testbench | Implementado |
-| 02 | [Porta OR](01_Portas_Logicas/02_OR/README.md) | Descrição RTL, testbench e tabela-verdade | Implementado — validação pendente |
+| 02 | [Porta OR](01_Portas_Logicas/02_OR/README.md) | Descrição RTL, testbench e tabela-verdade | Concluído |
 | 03 | Porta NOT | Inversão lógica | Planejado |
 | 04 | Porta NAND | Porta universal | Planejado |
 | 05 | Porta NOR | Porta universal | Planejado |

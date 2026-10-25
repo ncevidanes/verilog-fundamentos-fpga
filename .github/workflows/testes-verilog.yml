@@ -1,0 +1,16 @@
+name: Testes Verilog
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  simular-and:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter codigo
+        uses: actions/checkout@v4
+      - name: Instalar Icarus Verilog
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+      - name: Executar testbench da porta AND
+        run: make test

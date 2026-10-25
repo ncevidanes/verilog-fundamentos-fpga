@@ -1,0 +1,15 @@
+# Artefatos de simulacao
+*.vvp
+*.vcd
+*.fst
+*.lxt
+*.lxt2
+*.vpd
+build/
+
+# Arquivos de editor e sistema
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store

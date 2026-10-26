@@ -10,7 +10,7 @@ Ambiente: Linux, **VS Code**, **Icarus Verilog** e **GTKWave**.
 |:--:|:--|:--|:--|
 | 01 | [Porta AND](01_Portas_Logicas/01_AND/README.md) | Descrição RTL, tabela-verdade e testbench | Concluído |
 | 02 | [Porta OR](01_Portas_Logicas/02_OR/README.md) | Descrição RTL, testbench e tabela-verdade | Concluído |
-| 03 | [Porta NOT](01_Portas_Logicas/03_NOT/README.md) | Inversão lógica e verificação dos dois estados | Simulação validada; captura pendente de inclusão no GitHub |
+| 03 | [Porta NOT](01_Portas_Logicas/03_NOT/README.md) | Inversão lógica e verificação dos dois estados | Concluído (simulação e captura publicadas) |
 | 04 | Porta NAND | Porta universal | Planejado |
 | 05 | Porta NOR | Porta universal | Planejado |
 | 06 | Porta XOR | Ou exclusivo | Planejado |

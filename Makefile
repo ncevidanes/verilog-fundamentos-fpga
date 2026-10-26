@@ -5,11 +5,12 @@ GTKWAVE ?= gtkwave
 AND_DIR := 01_Portas_Logicas/01_AND
 OR_DIR  := 01_Portas_Logicas/02_OR
 NOT_DIR := 01_Portas_Logicas/03_NOT
+NAND_DIR := 01_Portas_Logicas/04_NAND
 
-.PHONY: all test test-and test-or test-not wave wave-and wave-or wave-not clean
+.PHONY: all test test-and test-or test-not test-nand wave wave-and wave-or wave-not wave-nand clean
 all: test
 
-test: test-and test-or test-not
+test: test-and test-or test-not test-nand
 
 test-and:
 	@mkdir -p build
@@ -26,6 +27,11 @@ test-not:
 	$(IVERILOG) -Wall -s tb_porta_not -o build/porta_not.vvp $(NOT_DIR)/porta_not.v $(NOT_DIR)/tb_porta_not.v
 	$(VVP) build/porta_not.vvp
 
+test-nand:
+	@mkdir -p build
+	$(IVERILOG) -Wall -s tb_porta_nand -o build/porta_nand.vvp $(NAND_DIR)/porta_nand.v $(NAND_DIR)/tb_porta_nand.v
+	$(VVP) build/porta_nand.vvp
+
 wave: wave-and
 
 wave-and: test-and
@@ -37,5 +43,8 @@ wave-or: test-or
 wave-not: test-not
 	$(GTKWAVE) ondas_not.vcd
 
+wave-nand: test-nand
+	$(GTKWAVE) ondas_nand.vcd
+
 clean:
-	rm -rf build ondas.vcd ondas_or.vcd ondas_not.vcd
+	rm -rf build ondas.vcd ondas_or.vcd ondas_not.vcd ondas_nand.vcd

@@ -4,7 +4,7 @@
 
 Implementar a porta inversora (NOT) em Verilog HDL, construir um testbench auto-verificável e interpretar as formas de onda da simulação no GTKWave. A atividade dá continuidade às aulas de portas AND e OR.
 
-**Estado:** simulação local aprovada em 25/10/2026, conforme saída do Icarus Verilog e captura do GTKWave fornecidas durante a aula. A captura precisa ser adicionada como arquivo PNG neste diretório para ficar visível no GitHub.
+**Estado:** simulação local aprovada em 25/10/2026, conforme saída do Icarus Verilog e captura real do GTKWave fornecidas durante a aula. A captura está publicada neste diretório.
 
 ## 2. Fundamentos
 
@@ -153,15 +153,11 @@ O teste termina em **20 ns simulados**. O intervalo de 10 ns foi imposto pelo te
 
 ### 6.1. Evidência visual no GTKWave
 
-A captura original do GTKWave foi fornecida e analisada durante a aula, mostrando `A` e `Y` complementares e o contador `erros = 0`.
+A captura real do GTKWave confirma `A` e `Y` complementares no intervalo de 0 a 20 ns e o contador `erros = 0`.
 
-**Arquivo de evidência a incorporar:** `porta_not_gtkwave.png`, na mesma pasta deste README.
-
-Após a inclusão, a imagem pode ser referenciada assim:
-
-~~~markdown
 ![Forma de onda da porta NOT no GTKWave](porta_not_gtkwave.png)
-~~~
+
+*Figura 1 — Captura do GTKWave fornecida após a execução do testbench da Aula 03.*
 
 ## 7. Estrutura
 
@@ -171,7 +167,7 @@ Após a inclusão, a imagem pode ser referenciada assim:
     ├── porta_not.v
     ├── tb_porta_not.v
     ├── README.md
-    └── porta_not_gtkwave.png  # Evidência gráfica: incluir o PNG
+    └── porta_not_gtkwave.png  # Captura real do GTKWave
 ~~~
 
 Os arquivos `*.vvp` e `*.vcd` são gerados pela simulação e já estão ignorados pelo `.gitignore`.

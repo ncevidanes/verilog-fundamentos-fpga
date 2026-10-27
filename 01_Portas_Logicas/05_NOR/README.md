@@ -56,7 +56,7 @@ assign Y = ~(A | B);
 
 primeiro realiza a operação OR bit a bit e depois inverte o resultado. Como o circuito é combinacional, qualquer alteração em A ou B atualiza a saída Y.
 
-A diretiva `timescale 1ns/1ps define unidade temporal de 1 ns e precisão de 1 ps apenas para a simulação. O módulo não modela atraso físico de propagação.
+A diretiva `timescale 1ns/1ps` define unidade temporal de 1 ns e precisão de 1 ps apenas para a simulação. O módulo não modela atraso físico de propagação.
 
 ## 4. Testbench — tb_porta_nor.v
 

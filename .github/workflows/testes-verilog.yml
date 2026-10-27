@@ -7,10 +7,13 @@ on:
 jobs:
   testar-portas:
     runs-on: ubuntu-latest
+
     steps:
       - name: Obter codigo
         uses: actions/checkout@v4
+
       - name: Instalar Icarus Verilog
         run: sudo apt-get update && sudo apt-get install -y iverilog
-      - name: Executar testbenches AND, OR, NOT e NAND
+
+      - name: Executar testbenches AND, OR, NOT, NAND e NOR
         run: make test

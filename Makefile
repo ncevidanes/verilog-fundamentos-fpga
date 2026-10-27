@@ -2,15 +2,17 @@ IVERILOG ?= iverilog
 VVP ?= vvp
 GTKWAVE ?= gtkwave
 
-AND_DIR := 01_Portas_Logicas/01_AND
-OR_DIR  := 01_Portas_Logicas/02_OR
-NOT_DIR := 01_Portas_Logicas/03_NOT
+AND_DIR  := 01_Portas_Logicas/01_AND
+OR_DIR   := 01_Portas_Logicas/02_OR
+NOT_DIR  := 01_Portas_Logicas/03_NOT
 NAND_DIR := 01_Portas_Logicas/04_NAND
+NOR_DIR  := 01_Portas_Logicas/05_NOR
 
-.PHONY: all test test-and test-or test-not test-nand wave wave-and wave-or wave-not wave-nand clean
+.PHONY: all test test-and test-or test-not test-nand test-nor wave wave-and wave-or wave-not wave-nand wave-nor clean
+
 all: test
 
-test: test-and test-or test-not test-nand
+test: test-and test-or test-not test-nand test-nor
 
 test-and:
 	@mkdir -p build
@@ -32,6 +34,11 @@ test-nand:
 	$(IVERILOG) -Wall -s tb_porta_nand -o build/porta_nand.vvp $(NAND_DIR)/porta_nand.v $(NAND_DIR)/tb_porta_nand.v
 	$(VVP) build/porta_nand.vvp
 
+test-nor:
+	@mkdir -p build
+	$(IVERILOG) -Wall -s tb_porta_nor -o build/porta_nor.vvp $(NOR_DIR)/porta_nor.v $(NOR_DIR)/tb_porta_nor.v
+	$(VVP) build/porta_nor.vvp
+
 wave: wave-and
 
 wave-and: test-and
@@ -46,5 +53,8 @@ wave-not: test-not
 wave-nand: test-nand
 	$(GTKWAVE) ondas_nand.vcd
 
+wave-nor: test-nor
+	$(GTKWAVE) ondas_nor.vcd
+
 clean:
-	rm -rf build ondas.vcd ondas_or.vcd ondas_not.vcd ondas_nand.vcd
+	rm -rf build ondas.vcd ondas_or.vcd ondas_not.vcd ondas_nand.vcd ondas_nor.vcd

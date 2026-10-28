@@ -8,12 +8,13 @@ NOT_DIR  := 01_Portas_Logicas/03_NOT
 NAND_DIR := 01_Portas_Logicas/04_NAND
 NOR_DIR  := 01_Portas_Logicas/05_NOR
 XOR_DIR  := 01_Portas_Logicas/06_XOR
+XNOR_DIR := 01_Portas_Logicas/07_XNOR
 
-.PHONY: all test test-and test-or test-not test-nand test-nor test-xor wave wave-and wave-or wave-not wave-nand wave-nor wave-xor clean
+.PHONY: all test test-and test-or test-not test-nand test-nor test-xor test-xnor wave wave-and wave-or wave-not wave-nand wave-nor wave-xor wave-xnor clean
 
 all: test
 
-test: test-and test-or test-not test-nand test-nor test-xor
+test: test-and test-or test-not test-nand test-nor test-xor test-xnor
 
 test-and:
 	@mkdir -p build
@@ -45,6 +46,11 @@ test-xor:
 	$(IVERILOG) -Wall -s tb_porta_xor -o build/porta_xor.vvp $(XOR_DIR)/porta_xor.v $(XOR_DIR)/tb_porta_xor.v
 	$(VVP) build/porta_xor.vvp
 
+test-xnor:
+	@mkdir -p build
+	$(IVERILOG) -Wall -s tb_porta_xnor -o build/porta_xnor.vvp $(XNOR_DIR)/porta_xnor.v $(XNOR_DIR)/tb_porta_xnor.v
+	$(VVP) build/porta_xnor.vvp
+
 wave: wave-and
 
 wave-and: test-and
@@ -65,5 +71,8 @@ wave-nor: test-nor
 wave-xor: test-xor
 	$(GTKWAVE) ondas_xor.vcd
 
+wave-xnor: test-xnor
+	$(GTKWAVE) ondas_xnor.vcd
+
 clean:
-	rm -rf build ondas.vcd ondas_or.vcd ondas_not.vcd ondas_nand.vcd ondas_nor.vcd ondas_xor.vcd
+	rm -rf build ondas.vcd ondas_or.vcd ondas_not.vcd ondas_nand.vcd ondas_nor.vcd ondas_xor.vcd ondas_xnor.vcd

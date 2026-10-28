@@ -14,7 +14,7 @@ Ambiente: Linux, **VS Code**, **Icarus Verilog** e **GTKWave**.
 | 04 | [Porta NAND](01_Portas_Logicas/04_NAND/README.md) | Porta universal, testbench e formas de onda | Concluído (simulação e captura publicadas) |
 | 05 | [Porta NOR](01_Portas_Logicas/05_NOR/README.md) | Porta universal, testbench e formas de onda | Concluído (simulação e captura publicadas) |
 | 06 | [Porta XOR](01_Portas_Logicas/06_XOR/README.md) | Ou exclusivo, testbench e formas de onda | Concluído (simulação e captura publicadas) |
-| 07 | Porta XNOR | Equivalência | Planejado |
+| 07 | [Porta XNOR](01_Portas_Logicas/07_XNOR/README.md) | Equivalência, testbench e formas de onda | Concluído (simulação e captura publicadas) |
 
 ## Requisitos
 
@@ -33,7 +33,7 @@ Na raiz do projeto:
 make test
 ~~~
 
-O comando compila e verifica as portas **AND (4 combinações), OR (4 combinações), NOT (2 combinações), NAND (4 combinações), NOR (4 combinações) e XOR (4 combinações)**, totalizando **22 vetores de entrada**.
+O comando compila e verifica as portas **AND (4 combinações), OR (4 combinações), NOT (2 combinações), NAND (4 combinações), NOR (4 combinações), XOR (4 combinações) e XNOR (4 combinações)**, totalizando **26 vetores de entrada**.
 
 Para executar cada exercício separadamente:
 
@@ -44,6 +44,7 @@ make test-not
 make test-nand
 make test-nor
 make test-xor
+make test-xnor
 ~~~
 
 ## Visualizar as formas de onda
@@ -55,6 +56,7 @@ make wave-not
 make wave-nand
 make wave-nor
 make wave-xor
+make wave-xnor
 ~~~
 
 O comando make wave permanece disponível como atalho para make wave-and.
@@ -76,11 +78,12 @@ make clean
 ├── 03_NOT/
 ├── 04_NAND/
 ├── 05_NOR/
-└── 06_XOR/
-    ├── porta_xor.v
-    ├── tb_porta_xor.v
+├── 06_XOR/
+└── 07_XNOR/
+    ├── porta_xnor.v
+    ├── tb_porta_xnor.v
     ├── README.md
-    └── porta_xor_gtkwave.png
+    └── porta_xnor_gtkwave.png
 ~~~
 
 Cada exercício inclui o módulo Verilog, o testbench e sua própria documentação. Capturas do GTKWave são adicionadas às respectivas pastas como evidência de simulação.
@@ -89,7 +92,7 @@ Os estudos específicos de **SAPHO** poderão continuar em um repositório dedic
 
 ## Integração contínua
 
-O fluxo em .github/workflows/testes-verilog.yml executa make test nos eventos *push* e *pull request*, validando automaticamente as portas AND, OR, NOT, NAND, NOR e XOR, totalizando 22 vetores de teste.
+O fluxo em .github/workflows/testes-verilog.yml executa make test nos eventos *push* e *pull request*, validando automaticamente as portas AND, OR, NOT, NAND, NOR, XOR e XNOR, totalizando 26 vetores de teste.
 
 ## Direitos de uso
 

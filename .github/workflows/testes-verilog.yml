@@ -15,5 +15,5 @@ jobs:
       - name: Instalar Icarus Verilog
         run: sudo apt-get update && sudo apt-get install -y iverilog
 
-      - name: Executar testbenches AND, OR, NOT, NAND e NOR
+      - name: Executar testbenches AND, OR, NOT, NAND, NOR e XOR
         run: make test

@@ -4,9 +4,13 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   testar-portas:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Obter codigo
@@ -15,5 +19,17 @@ jobs:
       - name: Instalar Icarus Verilog
         run: sudo apt-get update && sudo apt-get install -y iverilog
 
-      - name: Executar testbenches AND, OR, NOT, NAND, NOR, XOR e XNOR
+      - name: Executar testes das portas e dos circuitos combinacionais
         run: make test
+
+      - name: Salvar formas de onda da simulacao
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: formas-de-onda
+          path: |
+            ondas*.vcd
+            build/ondas*.vcd
+          if-no-files-found: warn
+          retention-days: 7
+

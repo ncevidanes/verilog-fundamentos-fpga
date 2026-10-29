@@ -9,12 +9,23 @@ NAND_DIR := 01_Portas_Logicas/04_NAND
 NOR_DIR  := 01_Portas_Logicas/05_NOR
 XOR_DIR  := 01_Portas_Logicas/06_XOR
 XNOR_DIR := 01_Portas_Logicas/07_XNOR
+MEIO_SOMADOR_DIR := 02_Circuitos_Combinacionais/01_Meio_Somador
 
 .PHONY: all test test-and test-or test-not test-nand test-nor test-xor test-xnor wave wave-and wave-or wave-not wave-nand wave-nor wave-xor wave-xnor clean
+.PHONY: test-portas test-combinacionais test-meio-somador wave-meio-somador
 
 all: test
 
-test: test-and test-or test-not test-nand test-nor test-xor test-xnor
+test: test-portas test-combinacionais
+
+test-portas: test-and test-or test-not test-nand test-nor test-xor test-xnor
+
+test-combinacionais: test-meio-somador
+
+test-meio-somador:
+	@mkdir -p build
+	$(IVERILOG) -Wall -s tb_meio_somador -o build/meio_somador.vvp $(MEIO_SOMADOR_DIR)/meio_somador.v $(MEIO_SOMADOR_DIR)/tb_meio_somador.v
+	$(VVP) build/meio_somador.vvp
 
 test-and:
 	@mkdir -p build
@@ -53,6 +64,9 @@ test-xnor:
 
 wave: wave-and
 
+wave-meio-somador: test-meio-somador
+	$(GTKWAVE) build/ondas_meio_somador.vcd
+
 wave-and: test-and
 	$(GTKWAVE) ondas.vcd
 
@@ -76,3 +90,4 @@ wave-xnor: test-xnor
 
 clean:
 	rm -rf build ondas.vcd ondas_or.vcd ondas_not.vcd ondas_nand.vcd ondas_nor.vcd ondas_xor.vcd ondas_xnor.vcd
+

@@ -96,20 +96,13 @@ make clean
 
 ## Organização
 
-~~~text
-01_Portas_Logicas/
-├── 01_AND/
-├── 02_OR/
-├── 03_NOT/
-├── 04_NAND/
-├── 05_NOR/
-├── 06_XOR/
-└── 07_XNOR/
-    ├── porta_xnor.v
-    ├── tb_porta_xnor.v
-    ├── README.md
-    └── porta_xnor_gtkwave.png
-~~~
+| Caminho | Conteúdo |
+|:--|:--|
+| `01_Portas_Logicas/` | Aulas 01 a 07: AND, OR, NOT, NAND, NOR, XOR e XNOR |
+| `02_Circuitos_Combinacionais/` | Módulo 02, iniciado pelo meio somador da Aula 08 |
+| `Makefile` | Comandos de compilação, teste, formas de onda e limpeza |
+| `.github/workflows/` | Testes automáticos e artefatos das simulações |
+| `build/` | Arquivos gerados localmente, ignorados pelo Git |
 
 Cada exercício inclui o módulo Verilog, o testbench e sua própria documentação. Capturas do GTKWave são adicionadas às respectivas pastas como evidência de simulação.
 
